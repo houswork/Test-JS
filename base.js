@@ -1,34 +1,23 @@
-let button = document.getElementById('finish');
+const CURRENT_YEAR = 2023;
+const CORRENT_ANSEWER = 'Ответ правильный';
+const ERROR_ANSEWER = 'Ответ неправильный';
 
-button.addEventListener('click', checkTest);
+const inputNode = document.querySelector('.js-input');
+const buttonNode = document.querySelector('.js-button');
+const outputNode = document.querySelector('.js-output');
 
-function checkTest()  {
-    let reesult = 0;
-    
-    let a1 = document.getElementById('q1').value;
-    if (a1 === '4')  {
-        reesult++;
+buttonNode.addEventListener('click', function() {
+    const inputValue = inputNode.value;
+
+    if (!inputNode){
+        return;
     }
-    
-    let a2 = document.getElementById('q2').value;
-    if (a2 === '6')  {
-        reesult++;
-    }
-    
-    let a3 = document.getElementById('q3').value;
-    if (a3 === '4')  {
-        reesult++;
-    }
-    
-    let a4 = document.getElementById('q4').value;
-    if (a4 === '11')  {
-        reesult++;
-    }
-    
-    let a5 = document.getElementById('q5').value;
-    if (a5 === '36')  {
-        reesult++;
+    const answer = Number (inputNode.value);
+    let output = CORRENT_ANSEWER;
+
+    if (answer !== CURRENT_YEAR) {
+        output = ERROR_ANSEWER;
     }
 
-    alert('Количество правильных ответов' + reesult);
-}
+    outputNode.innerHTML = output;
+});
